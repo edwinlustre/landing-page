@@ -1,0 +1,660 @@
+---
+// MarioFooter component with dark grey background, Mario pixel art stage, and soft cards
+---
+
+<footer class="mario-footer" id="contacto">
+	<!-- Super Mario Bros Pixel Art Stage -->
+	<div class="mario-stage" aria-label="Super Mario Bros Pixel Art Stage">
+		<div class="stage-sky">
+			<div class="pixel-cloud cloud-1"></div>
+			<div class="pixel-cloud cloud-2"></div>
+			<div class="pixel-star star-1"></div>
+			<div class="pixel-star star-2"></div>
+			<div class="pixel-star star-3"></div>
+		</div>
+
+		<div class="stage-world">
+			<!-- Mario Character -->
+			<div class="pixel-mario" id="marioChar" title="¡Haz clic en el bloque [?]!">
+				<!-- Pixel Mario SVG -->
+				<svg width="40" height="44" viewBox="0 0 16 16" class="pixel-art">
+					<!-- Hat -->
+					<rect x="3" y="1" width="5" height="1" fill="#e52521" />
+					<rect x="2" y="2" width="9" height="1" fill="#e52521" />
+					<!-- Face / Skin -->
+					<rect x="3" y="3" width="3" height="1" fill="#fc9838" />
+					<rect x="6" y="3" width="1" height="1" fill="#000000" />
+					<rect x="7" y="3" width="1" height="1" fill="#fc9838" />
+					<rect x="2" y="4" width="1" height="1" fill="#fc9838" />
+					<rect x="3" y="4" width="1" height="1" fill="#000000" />
+					<rect x="4" y="4" width="3" height="1" fill="#fc9838" />
+					<rect x="7" y="4" width="1" height="1" fill="#000000" />
+					<rect x="8" y="4" width="3" height="1" fill="#fc9838" />
+					<rect x="2" y="5" width="1" height="1" fill="#fc9838" />
+					<rect x="3" y="5" width="1" height="1" fill="#000000" />
+					<rect x="4" y="5" width="3" height="1" fill="#fc9838" />
+					<rect x="7" y="5" width="4" height="1" fill="#000000" />
+					<rect x="3" y="6" width="7" height="1" fill="#fc9838" />
+					<!-- Shirt -->
+					<rect x="3" y="7" width="6" height="1" fill="#e52521" />
+					<rect x="2" y="8" width="8" height="1" fill="#e52521" />
+					<rect x="1" y="9" width="10" height="1" fill="#e52521" />
+					<!-- Overalls -->
+					<rect x="4" y="8" width="1" height="4" fill="#0000e6" />
+					<rect x="7" y="8" width="1" height="4" fill="#0000e6" />
+					<rect x="3" y="10" width="6" height="2" fill="#0000e6" />
+					<!-- Yellow Buttons -->
+					<rect x="4" y="9" width="1" height="1" fill="#fbd000" />
+					<rect x="7" y="9" width="1" height="1" fill="#fbd000" />
+					<!-- Boots -->
+					<rect x="2" y="12" width="3" height="2" fill="#8d4004" />
+					<rect x="7" y="12" width="3" height="2" fill="#8d4004" />
+				</svg>
+			</div>
+
+			<!-- Question Block & Bricks -->
+			<div class="blocks-group">
+				<div class="pixel-block brick-block"></div>
+				<button class="pixel-block question-block" id="questionBlock" aria-label="Golpear bloque Mario">
+					<span class="q-mark">?</span>
+					<div class="coin-popup" id="coinPopup">+100 🪙</div>
+				</button>
+				<div class="pixel-block brick-block"></div>
+				<div class="pixel-block brick-block"></div>
+			</div>
+
+			<!-- Green Warp Pipe -->
+			<div class="pixel-pipe">
+				<div class="pipe-top"></div>
+				<div class="pipe-body"></div>
+			</div>
+		</div>
+
+		<!-- Ground Tiles -->
+		<div class="stage-ground"></div>
+	</div>
+
+	<!-- Enormous Footer Content -->
+	<div class="footer-container">
+		<div class="footer-header">
+			<span class="pixel-label">WORLD 1-1</span>
+			<h2 class="footer-title">Sigamos en contacto</h2>
+			<p class="footer-description">
+				¿Tienes una idea, propuesta o proyecto en mente? Escríbeme y platiquemos.
+			</p>
+		</div>
+
+		<!-- Contact Cards Grid -->
+		<div class="contact-methods">
+			<!-- Email Card with 1-click Copy -->
+			<div class="contact-card email-card">
+				<div class="contact-icon">📧</div>
+				<div class="contact-info">
+					<span class="contact-label">Correo Principal</span>
+					<a href="mailto:edwin51092@hotmail.com" class="contact-value">edwin51092@hotmail.com</a>
+				</div>
+				<button class="copy-btn" id="copyEmailBtn" title="Copiar correo al portapapeles">
+					<span id="copyBtnText">Copiar</span>
+				</button>
+			</div>
+
+			<!-- GitHub Card -->
+			<a href="https://github.com/edwinlustre" target="_blank" rel="noopener noreferrer" class="contact-card">
+				<div class="contact-icon">🐙</div>
+				<div class="contact-info">
+					<span class="contact-label">GitHub</span>
+					<span class="contact-value">github.com/edwinlustre</span>
+				</div>
+				<span class="external-arrow">↗</span>
+			</a>
+
+			<!-- LinkedIn Card -->
+			<a href="https://www.linkedin.com/in/edwin-lustre-rodriguez-24b3613ab" target="_blank" rel="noopener noreferrer" class="contact-card">
+				<div class="contact-icon">💼</div>
+				<div class="contact-info">
+					<span class="contact-label">LinkedIn</span>
+					<span class="contact-value">Edwin Lustre Rodríguez</span>
+				</div>
+				<span class="external-arrow">↗</span>
+			</a>
+		</div>
+
+		<div class="footer-status">
+			<span class="status-dot"></span>
+			<span>Disponible para oportunidades laborales & vacantes</span>
+		</div>
+
+		<!-- Footer Bottom Bar -->
+		<div class="footer-bottom">
+			<p class="copyright">
+				© {new Date().getFullYear()} Edwin Lustre • Landing Page
+			</p>
+			<a href="#" class="top-btn" title="Volver al inicio">
+				▲ INICIO
+			</a>
+		</div>
+	</div>
+</footer>
+
+<script>
+	// Interactive Question Mark Block Logic
+	const questionBlock = document.getElementById('questionBlock');
+	const coinPopup = document.getElementById('coinPopup');
+	const marioChar = document.getElementById('marioChar');
+
+	if (questionBlock && coinPopup && marioChar) {
+		let score = 0;
+
+		questionBlock.addEventListener('click', () => {
+			marioChar.classList.remove('jump');
+			void marioChar.offsetWidth;
+			marioChar.classList.add('jump');
+
+			questionBlock.classList.remove('bump');
+			void questionBlock.offsetWidth;
+			questionBlock.classList.add('bump');
+
+			coinPopup.classList.remove('pop');
+			void coinPopup.offsetWidth;
+			score += 100;
+			coinPopup.textContent = `+100 🪙 (${score})`;
+			coinPopup.classList.add('pop');
+
+			// Synthesize 8-bit Mario coin sound
+			try {
+				const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+				if (AudioCtx) {
+					const ctx = new AudioCtx();
+					const osc1 = ctx.createOscillator();
+					const gain = ctx.createGain();
+
+					osc1.type = 'square';
+					const now = ctx.currentTime;
+					osc1.frequency.setValueAtTime(987.77, now);
+					osc1.frequency.setValueAtTime(1318.51, now + 0.08);
+
+					gain.gain.setValueAtTime(0.12, now);
+					gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+
+					osc1.connect(gain);
+					gain.connect(ctx.destination);
+
+					osc1.start(now);
+					osc1.stop(now + 0.35);
+				}
+			} catch (e) {
+				// Audio fallback silently ignored
+			}
+		});
+	}
+
+	// Email Copy to Clipboard
+	const copyEmailBtn = document.getElementById('copyEmailBtn');
+	const copyBtnText = document.getElementById('copyBtnText');
+
+	if (copyEmailBtn && copyBtnText) {
+		copyEmailBtn.addEventListener('click', async () => {
+			const email = 'edwin51092@hotmail.com';
+			try {
+				await navigator.clipboard.writeText(email);
+				copyBtnText.textContent = '¡Copiado!';
+				copyEmailBtn.classList.add('copied');
+				setTimeout(() => {
+					copyBtnText.textContent = 'Copiar';
+					copyEmailBtn.classList.remove('copied');
+				}, 2000);
+			} catch (err) {
+				copyBtnText.textContent = 'Error';
+			}
+		});
+	}
+</script>
+
+<style>
+	/* Dark Grey Enormous Footer */
+	.mario-footer {
+		background-color: #16161a; /* Dark grey in both light and dark themes */
+		color: #f3f4f6;
+		margin-top: auto;
+		width: 100%;
+		position: relative;
+		border-top: 3px solid #2a2a32;
+		overflow: hidden;
+	}
+
+	/* Mario Stage Background */
+	.mario-stage {
+		background: linear-gradient(180deg, #101014 0%, #1e1e24 100%);
+		height: 210px;
+		width: 100%;
+		position: relative;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		border-bottom: 2px solid #2a2a32;
+	}
+
+	.stage-sky {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 40px;
+		pointer-events: none;
+	}
+
+	/* Pixel Clouds */
+	.pixel-cloud {
+		position: absolute;
+		background: #ffffff;
+		opacity: 0.15;
+		border-radius: 4px;
+		box-shadow: 
+			12px -12px 0 0 #ffffff,
+			24px 0 0 0 #ffffff,
+			36px -12px 0 0 #ffffff,
+			48px 0 0 0 #ffffff;
+		width: 24px;
+		height: 24px;
+	}
+	.cloud-1 { top: 25px; left: 12%; animation: floatCloud 28s linear infinite; }
+	.cloud-2 { top: 55px; right: 18%; animation: floatCloud 38s linear infinite reverse; }
+
+	@keyframes floatCloud {
+		0% { transform: translateX(-40px); }
+		50% { transform: translateX(40px); }
+		100% { transform: translateX(-40px); }
+	}
+
+	.pixel-star {
+		position: absolute;
+		width: 4px;
+		height: 4px;
+		background: #fbd000;
+		box-shadow: 0 0 6px #fbd000;
+	}
+	.star-1 { top: 20px; left: 25%; }
+	.star-2 { top: 45px; left: 65%; }
+	.star-3 { top: 15px; right: 22%; }
+
+	/* World Container */
+	.stage-world {
+		position: relative;
+		height: 135px;
+		max-width: 960px;
+		width: 100%;
+		margin: 0 auto;
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-around;
+		padding: 0 2rem;
+		z-index: 2;
+	}
+
+	/* Mario Character */
+	.pixel-mario {
+		position: absolute;
+		left: 22%;
+		bottom: 36px;
+		cursor: pointer;
+		transition: transform 0.15s ease;
+		z-index: 5;
+	}
+
+	.pixel-mario.jump {
+		animation: marioJump 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+	}
+
+	@keyframes marioJump {
+		0% { transform: translateY(0); }
+		50% { transform: translateY(-70px) scale(1.05); }
+		100% { transform: translateY(0); }
+	}
+
+	/* Blocks Group */
+	.blocks-group {
+		position: absolute;
+		left: 20%;
+		bottom: 96px;
+		display: flex;
+		gap: 0;
+	}
+
+	.pixel-block {
+		width: 36px;
+		height: 36px;
+		box-sizing: border-box;
+		position: relative;
+	}
+
+	.brick-block {
+		background-color: #d84004;
+		border: 3px solid #000000;
+		box-shadow: inset -3px -3px 0px 0px #802000, inset 3px 3px 0px 0px #fc9838;
+	}
+
+	.question-block {
+		background-color: #fbd000;
+		border: 3px solid #000000;
+		box-shadow: inset -3px -3px 0px 0px #d84004, inset 3px 3px 0px 0px #fff7a0;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		outline: none;
+		padding: 0;
+	}
+
+	.question-block:hover {
+		filter: brightness(1.1);
+	}
+
+	.question-block.bump {
+		animation: blockBump 0.25s ease;
+	}
+
+	@keyframes blockBump {
+		0% { transform: translateY(0); }
+		50% { transform: translateY(-12px); }
+		100% { transform: translateY(0); }
+	}
+
+	.q-mark {
+		font-family: var(--font-pixel);
+		font-size: 1.1rem;
+		color: #000000;
+		font-weight: bold;
+		text-shadow: 1px 1px 0 #ffffff;
+	}
+
+	.coin-popup {
+		position: absolute;
+		top: -30px;
+		left: 50%;
+		transform: translateX(-50%);
+		font-family: var(--font-pixel);
+		font-size: 0.72rem;
+		color: #fbd000;
+		text-shadow: 2px 2px 0 #000000;
+		white-space: nowrap;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.coin-popup.pop {
+		animation: coinPop 0.6s ease-out forwards;
+	}
+
+	@keyframes coinPop {
+		0% { transform: translate(-50%, 0) scale(0.8); opacity: 1; }
+		50% { transform: translate(-50%, -45px) scale(1.2); opacity: 1; }
+		100% { transform: translate(-50%, -60px) scale(1); opacity: 0; }
+	}
+
+	.pixel-pipe {
+		position: absolute;
+		right: 18%;
+		bottom: 36px;
+		width: 54px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.pipe-top {
+		width: 60px;
+		height: 24px;
+		background: #00a800;
+		border: 3px solid #000000;
+		box-shadow: inset -5px 0 0 #005800, inset 5px 0 0 #b8f818;
+	}
+
+	.pipe-body {
+		width: 52px;
+		height: 45px;
+		background: #00a800;
+		border-left: 3px solid #000000;
+		border-right: 3px solid #000000;
+		box-shadow: inset -5px 0 0 #005800, inset 5px 0 0 #b8f818;
+	}
+
+	.stage-ground {
+		height: 36px;
+		width: 100%;
+		background-color: #d84004;
+		border-top: 4px solid #000000;
+		box-shadow: inset 0 6px 0 #00a800;
+		background-image: 
+			radial-gradient(#802000 20%, transparent 20%),
+			radial-gradient(#fc9838 20%, transparent 20%);
+		background-size: 16px 16px;
+		background-position: 0 0, 8px 8px;
+		position: relative;
+		z-index: 3;
+	}
+
+	/* Footer Content */
+	.footer-container {
+		max-width: 860px;
+		margin: 0 auto;
+		padding: 4rem 1.5rem 2.5rem 1.5rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2.75rem;
+	}
+
+	.footer-header {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.pixel-label {
+		font-family: var(--font-pixel);
+		font-size: 0.68rem;
+		color: #e52521;
+		background: rgba(229, 37, 33, 0.12);
+		border: 1px solid rgba(229, 37, 33, 0.3);
+		padding: 0.35rem 0.85rem;
+		border-radius: 9999px;
+		letter-spacing: 0.5px;
+	}
+
+	.footer-title {
+		font-family: var(--font-pixel);
+		font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+		color: #ffffff;
+		text-shadow: 3px 3px 0 #000000, 5px 5px 0 rgba(229, 37, 33, 0.4);
+		letter-spacing: -1px;
+	}
+
+	.footer-description {
+		font-size: 1.05rem;
+		color: #9ca3af;
+		max-width: 520px;
+		line-height: 1.6;
+	}
+
+	.contact-methods {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	/* Soft rounded cards inside footer matching portfolio-web soft aesthetic */
+	.contact-card {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		background: rgba(255, 255, 255, 0.04);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		border-radius: 1.25rem; /* Soft rounded corners */
+		padding: 1.2rem 1.6rem;
+		text-decoration: none;
+		color: inherit;
+		transition: all 0.25s ease;
+	}
+
+	.contact-card:hover {
+		background: rgba(255, 255, 255, 0.08);
+		border-color: rgba(251, 208, 0, 0.5);
+		transform: translateY(-2px);
+	}
+
+	.contact-icon {
+		font-size: 1.75rem;
+		margin-right: 1.2rem;
+		flex-shrink: 0;
+	}
+
+	.contact-info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+		flex: 1;
+	}
+
+	.contact-label {
+		font-size: 0.78rem;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		color: #9ca3af;
+		font-weight: 600;
+	}
+
+	.contact-value {
+		font-size: 1.08rem;
+		font-weight: 700;
+		color: #ffffff;
+		word-break: break-all;
+	}
+
+	.copy-btn {
+		font-family: var(--font-sans);
+		font-size: 0.8rem;
+		font-weight: 600;
+		background: rgba(255, 255, 255, 0.1);
+		color: #ffffff;
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		padding: 0.55rem 1.1rem;
+		border-radius: 9999px;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		outline: none;
+		flex-shrink: 0;
+	}
+
+	.copy-btn:hover {
+		background: var(--color-accent-mario-red);
+		border-color: var(--color-accent-mario-red);
+	}
+
+	.copy-btn.copied {
+		background: #22c55e;
+		border-color: #22c55e;
+	}
+
+	.external-arrow {
+		font-size: 1.2rem;
+		color: #6b7280;
+		transition: transform 0.2s ease, color 0.2s ease;
+	}
+
+	.contact-card:hover .external-arrow {
+		transform: translate(3px, -3px);
+		color: var(--color-accent-mario-yellow);
+	}
+
+	.footer-status {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		font-size: 0.92rem;
+		color: #d1d5db;
+		background: rgba(255, 255, 255, 0.04);
+		padding: 0.55rem 1.2rem;
+		border-radius: 9999px;
+		border: 1px solid rgba(255, 255, 255, 0.08);
+	}
+
+	.status-dot {
+		width: 9px;
+		height: 9px;
+		background-color: #22c55e;
+		border-radius: 50%;
+		box-shadow: 0 0 10px #22c55e;
+		animation: pulseDot 2s infinite;
+	}
+
+	@keyframes pulseDot {
+		0%, 100% { opacity: 1; transform: scale(1); }
+		50% { opacity: 0.5; transform: scale(0.8); }
+	}
+
+	.footer-bottom {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-top: 2rem;
+		border-top: 1px solid #2a2a32;
+		font-size: 0.88rem;
+		color: #6b7280;
+	}
+
+	.top-btn {
+		font-family: var(--font-pixel);
+		font-size: 0.62rem;
+		color: var(--color-accent-mario-yellow);
+		text-decoration: none;
+		background: rgba(255, 255, 255, 0.04);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		padding: 0.55rem 0.95rem;
+		border-radius: 9999px;
+		transition: all 0.2s ease;
+	}
+
+	.top-btn:hover {
+		background: var(--color-accent-mario-yellow);
+		color: #000000;
+		border-color: var(--color-accent-mario-yellow);
+	}
+
+	@media (max-width: 640px) {
+		.mario-stage {
+			height: 175px;
+		}
+		.pixel-mario {
+			left: 10%;
+			bottom: 36px;
+		}
+		.blocks-group {
+			left: 8%;
+			bottom: 82px;
+		}
+		.pixel-pipe {
+			right: 8%;
+		}
+		.footer-title {
+			font-size: 1.5rem;
+		}
+		.contact-card {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.8rem;
+		}
+		.copy-btn {
+			align-self: flex-start;
+		}
+		.footer-bottom {
+			flex-direction: column;
+			gap: 1rem;
+			text-align: center;
+		}
+	}
+</style>

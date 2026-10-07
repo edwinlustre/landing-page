@@ -1,0 +1,168 @@
+---
+// Antigravity-inspired Main Links list
+const links = [
+	{
+		title: "Portfolio Web",
+		description: "Proyectos completos, experiencia laboral y stack tecnológico detallado.",
+		href: "https://portfolio.edwinlst.tech",
+		meta: "Explorar",
+	},
+	{
+		title: "GitHub",
+		description: "Código fuente, contribuciones open-source y proyectos personales.",
+		href: "https://github.com/edwinlustre",
+		meta: "@edwinlustre",
+	},
+	{
+		title: "LinkedIn",
+		description: "Trayectoria profesional, aptitudes y red de contactos.",
+		href: "https://www.linkedin.com/in/edwin-lustre-rodriguez-24b3613ab",
+		meta: "Conectar",
+	},
+	{
+		title: "Correo Electrónico",
+		description: "Escríbeme directamente para oportunidades, vacantes o dudas.",
+		href: "mailto:edwin51092@hotmail.com",
+		meta: "Mensaje directo",
+	},
+];
+---
+
+<section class="links-section">
+	<div class="links-container">
+		<div class="section-tag">
+			<span>Links Principales</span>
+		</div>
+
+		<div class="links-list">
+			{links.map((link) => (
+				<a 
+					href={link.href}
+					target={link.href.startsWith("http") ? "_blank" : undefined}
+					rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+					class="link-row"
+				>
+					<div class="link-main">
+						<h2 class="link-title">{link.title}</h2>
+						<p class="link-description">{link.description}</p>
+					</div>
+					<div class="link-side">
+						<span class="link-meta">{link.meta}</span>
+						<span class="link-arrow">↗</span>
+					</div>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.links-section {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 1.5rem 2rem 7rem 2rem;
+		width: 100%;
+	}
+
+	.links-container {
+		display: flex;
+		flex-direction: column;
+		gap: 1.75rem;
+	}
+
+	.section-tag {
+		font-size: 0.82rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-muted);
+	}
+
+	.links-list {
+		display: flex;
+		flex-direction: column;
+		border-top: 1px solid var(--color-border);
+		transition: border-color 0.25s ease;
+	}
+
+	.link-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1.75rem 0.5rem;
+		border-bottom: 1px solid var(--color-border);
+		text-decoration: none;
+		color: inherit;
+		gap: 2rem;
+		border-radius: 4px;
+		transition: background-color 0.2s ease, border-color 0.25s ease;
+	}
+
+	.link-row:hover {
+		background-color: var(--color-card-hover);
+	}
+
+	.link-main {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+		max-width: 640px;
+	}
+
+	.link-title {
+		font-size: 1.35rem;
+		font-weight: 600;
+		letter-spacing: -0.025em;
+		color: var(--color-text);
+		margin: 0;
+		transition: color 0.25s ease;
+	}
+
+	.link-description {
+		font-size: 0.95rem;
+		color: var(--color-muted);
+		line-height: 1.5;
+		margin: 0;
+		transition: color 0.25s ease;
+	}
+
+	.link-side {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		flex-shrink: 0;
+	}
+
+	.link-meta {
+		font-size: 0.88rem;
+		color: var(--color-muted);
+		font-weight: 500;
+		letter-spacing: -0.01em;
+	}
+
+	.link-arrow {
+		font-size: 1.35rem;
+		color: var(--color-text);
+		transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+	}
+
+	.link-row:hover .link-arrow {
+		transform: translate(3px, -3px);
+	}
+
+	@media (max-width: 640px) {
+		.links-section {
+			padding: 1rem 1.5rem 5rem 1.5rem;
+		}
+		.link-row {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.75rem;
+			padding: 1.4rem 0.25rem;
+		}
+		.link-side {
+			width: 100%;
+			justify-content: space-between;
+		}
+	}
+</style>
