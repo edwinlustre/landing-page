@@ -18,22 +18,14 @@
 					<span class="box-label">Correo electrónico</span>
 					<div class="email-action-row">
 						<a href="mailto:edwin51092@hotmail.com" class="email-link">edwin51092@hotmail.com</a>
-						<button class="mini-copy-btn" id="footerCopyBtn" title="Copiar correo">
-							<span id="footerCopyText">Copiar</span>
-						</button>
 					</div>
-				</div>
-
-				<div class="location-box">
-					<span class="box-label">Ubicación & Disponibilidad</span>
-					<span class="location-text">México (UTC-6) • Remoto / Híbrido</span>
 				</div>
 			</div>
 		</div>
 
-		<!-- Giant Wordmark Section: perfectly fitted so "Sigamos en contacto" is 100% visible -->
+		
 		<div class="wordmark-container">
-			<h2 class="giant-wordmark">Sigamos en contacto</h2>
+			<h2 class="giant-wordmark">Di hola :D</h2>
 		</div>
 
 		<!-- Bottom Bar -->
@@ -50,27 +42,6 @@
 		</div>
 	</div>
 </footer>
-
-<script>
-	const footerCopyBtn = document.getElementById('footerCopyBtn');
-	const footerCopyText = document.getElementById('footerCopyText');
-
-	if (footerCopyBtn && footerCopyText) {
-		footerCopyBtn.addEventListener('click', async () => {
-			try {
-				await navigator.clipboard.writeText('edwin51092@hotmail.com');
-				footerCopyText.textContent = '¡Copiado!';
-				footerCopyBtn.classList.add('copied');
-				setTimeout(() => {
-					footerCopyText.textContent = 'Copiar';
-					footerCopyBtn.classList.remove('copied');
-				}, 2000);
-			} catch (e) {
-				footerCopyText.textContent = 'Error';
-			}
-		});
-	}
-</script>
 
 <style>
 	/* Antigravity-inspired dark grey footer */
@@ -196,7 +167,7 @@
 	/* Giant Wordmark Section - Fitted precisely so it never gets cut off */
 	.wordmark-container {
 		width: 100%;
-		padding: 1.5rem 0 0.5rem 0;
+		padding: 0.2rem 0 0.5rem 0;
 		overflow: hidden;
 		display: flex;
 		align-items: center;
@@ -205,7 +176,7 @@
 	.giant-wordmark {
 		/* Scale with container width so it fits on 1 line without cutting letters */
 		font-size: clamp(2rem, 6.7vw, 5.8rem);
-		font-weight: 800;
+		font-weight: 1000;
 		letter-spacing: -0.04em;
 		line-height: 0.95;
 		color: #ffffff;
