@@ -2,7 +2,7 @@
 // Easter Eggs collection
 // 1. Console ASCII art (on load)
 // 2. Konami Code → terminal glitch overlay
-// 3. Click name ×5 → name scrambles then resets
+// 3. Click name ×2 → name scrambles then resets
 // 4. Type "hola" anywhere → toast aparece
 // 5. Hover "Hablemos." 3s → texto cambia
 ---
@@ -17,9 +17,10 @@
 	hola :D
 </div>
 
-<script>
-// ─── 1. Console ASCII Art ────────────────────────────────────────────────────
-const art = `
+<script is:inline>
+(function() {
+	// ─── 1. Console ASCII Art ────────────────────────────────────────────────────
+	const art = `
 %c
    ██████╗  ██████╗ ██████╗ ██╗███╗  ██╗ ██████╗  
    ██╔═══╝ ██╔══██╗ ██╔══██╗██║████╗ ██║ ██╔══██╗ 
@@ -37,165 +38,167 @@ const art = `
 %c   github.com/edwinlustre
 `;
 
-console.log(
-	art,
-	'font-family: monospace; color: #6366f1; font-size: 10px; line-height: 1.3;',
-	'font-family: monospace; color: #a1a1aa; font-size: 11px;'
-);
+	console.log(
+		art,
+		'font-family: monospace; color: #6366f1; font-size: 10px; line-height: 1.3;',
+		'font-family: monospace; color: #a1a1aa; font-size: 11px;'
+	);
 
-// ─── 2. Konami Code ──────────────────────────────────────────────────────────
-const KONAMI = [
-	'ArrowUp','ArrowUp','ArrowDown','ArrowDown',
-	'ArrowLeft','ArrowRight','ArrowLeft','ArrowRight',
-	'KeyB','KeyA',
-];
-let konamiIdx = 0;
-let konamiTriggered = false;
+	// ─── 2. Konami Code ──────────────────────────────────────────────────────────
+	const KONAMI = [
+		'ArrowUp','ArrowUp','ArrowDown','ArrowDown',
+		'ArrowLeft','ArrowRight','ArrowLeft','ArrowRight',
+		'KeyB','KeyA',
+	];
+	let konamiIdx = 0;
+	let konamiTriggered = false;
 
-const overlay = document.getElementById('konamiOverlay')!;
-const konamiText = document.getElementById('konamiText')!;
+	const overlay = document.getElementById('konamiOverlay');
+	const konamiText = document.getElementById('konamiText');
 
-const konamiLines = [
-	'$ sudo rm -rf ./bugs --no-preserve-root',
-	'',
-	'  eliminando bugs...',
-	'  ████████████░░░░░░░░  64%',
-	'',
-	'  ERROR: bugs not found in this repo',
-	'  WARNING: skill issue detected',
-	'',
-	'  > recomendación del sistema:',
-	'  > abre el portfolio y lee más.',
-	'',
-	'  just kidding. sigue navegando :D',
-	'  — Edwin',
-];
+	const konamiLines = [
+		'$ sudo rm -rf ./bugs --no-preserve-root',
+		'',
+		'  eliminando bugs...',
+		'  ████████████░░░░░░░░  64%',
+		'',
+		'  ERROR: bugs not found in this repo',
+		'  WARNING: skill issue detected',
+		'',
+		'  > recomendación del sistema:',
+		'  > abre el portfolio y lee más.',
+		'',
+		'  just kidding. sigue navegando :D',
+		'  — Edwin',
+	];
 
-document.addEventListener('keydown', (e) => {
-	if (konamiIdx < KONAMI.length && e.code === KONAMI[konamiIdx]) {
-		konamiIdx++;
-		if (konamiIdx === KONAMI.length) {
+	document.addEventListener('keydown', function(e) {
+		if (konamiIdx < KONAMI.length && e.code === KONAMI[konamiIdx]) {
+			konamiIdx++;
+			if (konamiIdx === KONAMI.length) {
+				konamiIdx = 0;
+				if (!konamiTriggered) {
+					konamiTriggered = true;
+					triggerKonami();
+					setTimeout(function() { konamiTriggered = false; }, 5000);
+				}
+			}
+		} else {
 			konamiIdx = 0;
-			if (!konamiTriggered) {
-				konamiTriggered = true;
-				triggerKonami();
-				setTimeout(() => { konamiTriggered = false; }, 5000);
+		}
+	});
+
+	function triggerKonami() {
+		if (!overlay || !konamiText) return;
+		overlay.classList.add('active');
+		konamiText.textContent = '';
+
+		let lineIdx = 0;
+		const interval = setInterval(function() {
+			if (lineIdx < konamiLines.length) {
+				konamiText.textContent += konamiLines[lineIdx] + '\n';
+				lineIdx++;
+			} else {
+				clearInterval(interval);
+				setTimeout(function() {
+					overlay.classList.remove('active');
+					konamiText.textContent = '';
+				}, 2200);
+			}
+		}, 90);
+	}
+
+	// ─── 3. Click name ×2 → scramble ────────────────────────────────────────────
+	const nameEl = document.getElementById('heroName');
+	let nameClicks = 0;
+	let nameTimer = null;
+
+	const scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234';
+	const originalName = 'Edwin Rodriguez';
+	const finalName = 'Sí, soy yo. Hola :D';
+
+	if (nameEl) {
+		nameEl.addEventListener('click', function() {
+			nameClicks++;
+			if (nameTimer) clearTimeout(nameTimer);
+
+			if (nameClicks >= 2) {
+				nameClicks = 0;
+				scrambleName(nameEl, finalName, function() {
+					setTimeout(function() { scrambleName(nameEl, originalName); }, 2000);
+				});
+			} else {
+				nameTimer = setTimeout(function() { nameClicks = 0; }, 700);
+			}
+		});
+	}
+
+	function scrambleName(el, target, onDone) {
+		let iteration = 0;
+		const maxIter = target.length * 3;
+		const id = setInterval(function() {
+			el.textContent = target
+				.split('')
+				.map(function(char, i) {
+					if (char === ' ') return ' ';
+					if (i < Math.floor(iteration / 3)) return char;
+					return scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+				})
+				.join('');
+			iteration++;
+			if (iteration > maxIter) {
+				clearInterval(id);
+				el.textContent = target;
+				if (onDone) onDone();
+			}
+		}, 28);
+	}
+
+	// ─── 4. Type "hola" anywhere ─────────────────────────────────────────────────
+	let typed = '';
+	const toast = document.getElementById('holaToast');
+	let toastTimer = null;
+
+	document.addEventListener('keydown', function(e) {
+		if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+		if (e.key && e.key.length === 1) {
+			typed += e.key.toLowerCase();
+			if (typed.length > 6) typed = typed.slice(-6);
+			if (typed.includes('hola')) {
+				typed = '';
+				showToast();
 			}
 		}
-	} else {
-		konamiIdx = 0;
+	});
+
+	function showToast() {
+		if (!toast) return;
+		toast.classList.add('visible');
+		if (toastTimer) clearTimeout(toastTimer);
+		toastTimer = setTimeout(function() { toast.classList.remove('visible'); }, 2500);
 	}
-});
 
-function triggerKonami() {
-	overlay.classList.add('active');
-	konamiText.textContent = '';
+	// ─── 5. Hover "Hablemos." 3s → text changes ─────────────────────────────────
+	const wordmark = document.getElementById('footerWordmark');
+	let hoverTimer = null;
 
-	let lineIdx = 0;
-	const interval = setInterval(() => {
-		if (lineIdx < konamiLines.length) {
-			konamiText.textContent += konamiLines[lineIdx] + '\n';
-			lineIdx++;
-		} else {
-			clearInterval(interval);
-			setTimeout(() => {
-				overlay.classList.remove('active');
-				konamiText.textContent = '';
-			}, 2200);
-		}
-	}, 90);
-}
+	if (wordmark) {
+		wordmark.addEventListener('mouseenter', function() {
+			hoverTimer = setTimeout(function() {
+				wordmark.textContent = '...en serio.';
+				wordmark.style.opacity = '0.7';
+				setTimeout(function() {
+					wordmark.textContent = 'Hablemos.';
+					wordmark.style.opacity = '';
+				}, 1800);
+			}, 3000);
+		});
 
-// ─── 3. Click name ×2 → scramble ────────────────────────────────────────────
-const nameEl = document.getElementById('heroName');
-let nameClicks = 0;
-let nameTimer: ReturnType<typeof setTimeout> | null = null;
-
-const scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234';
-const originalName = 'Edwin Rodriguez';
-const finalName = 'Sí, soy yo. Hola :D';
-
-if (nameEl) {
-	nameEl.addEventListener('click', () => {
-		nameClicks++;
-		if (nameTimer) clearTimeout(nameTimer);
-
-		if (nameClicks >= 2) {
-			nameClicks = 0;
-			scrambleName(nameEl, finalName, () => {
-				setTimeout(() => scrambleName(nameEl, originalName), 2000);
-			});
-		} else {
-			nameTimer = setTimeout(() => { nameClicks = 0; }, 700);
-		}
-	});
-}
-
-function scrambleName(el: HTMLElement, target: string, onDone?: () => void) {
-	let iteration = 0;
-	const maxIter = target.length * 3;
-	const id = setInterval(() => {
-		el.textContent = target
-			.split('')
-			.map((char, i) => {
-				if (char === ' ') return ' ';
-				if (i < Math.floor(iteration / 3)) return char;
-				return scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
-			})
-			.join('');
-		iteration++;
-		if (iteration > maxIter) {
-			clearInterval(id);
-			el.textContent = target;
-			onDone?.();
-		}
-	}, 28);
-}
-
-// ─── 4. Type "hola" anywhere ─────────────────────────────────────────────────
-let typed = '';
-const toast = document.getElementById('holaToast')!;
-let toastTimer: ReturnType<typeof setTimeout> | null = null;
-
-document.addEventListener('keydown', (e) => {
-	// Only track printable single chars, ignore if typing in an input
-	if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
-	if (e.key.length === 1) {
-		typed += e.key.toLowerCase();
-		if (typed.length > 6) typed = typed.slice(-6);
-		if (typed.includes('hola')) {
-			typed = '';
-			showToast();
-		}
+		wordmark.addEventListener('mouseleave', function() {
+			if (hoverTimer) clearTimeout(hoverTimer);
+		});
 	}
-});
-
-function showToast() {
-	toast.classList.add('visible');
-	if (toastTimer) clearTimeout(toastTimer);
-	toastTimer = setTimeout(() => toast.classList.remove('visible'), 2500);
-}
-
-// ─── 5. Hover "Hablemos." 3s → text changes ─────────────────────────────────
-const wordmark = document.getElementById('footerWordmark');
-let hoverTimer: ReturnType<typeof setTimeout> | null = null;
-
-if (wordmark) {
-	wordmark.addEventListener('mouseenter', () => {
-		hoverTimer = setTimeout(() => {
-			wordmark.textContent = '...en serio.';
-			wordmark.style.opacity = '0.7';
-			setTimeout(() => {
-				wordmark.textContent = 'Hablemos.';
-				wordmark.style.opacity = '';
-			}, 1800);
-		}, 3000);
-	});
-
-	wordmark.addEventListener('mouseleave', () => {
-		if (hoverTimer) clearTimeout(hoverTimer);
-	});
-}
+})();
 </script>
 
 <style>
@@ -221,14 +224,13 @@ if (wordmark) {
 	#konamiText {
 		font-family: monospace;
 		font-size: clamp(0.75rem, 1.4vw, 0.95rem);
-		color: #22c55e; /* terminal green */
+		color: #22c55e;
 		line-height: 1.7;
 		white-space: pre;
 		max-width: 90vw;
 		padding: 1rem;
 	}
 
-	/* Scanline effect */
 	#konamiOverlay.active::after {
 		content: '';
 		position: fixed;
