@@ -1,27 +1,27 @@
 ---
-// Antigravity-inspired Main Links list
+// Antigravity-inspired Main Links list — frosted backdrop for game readability
 const links = [
 	{
 		title: "Portfolio Web",
-		description: "Proyectos completos, experiencia laboral y stack tecnológico detallado.",
+		description: "Proyectos, experiencia y stack tecnológico a detalle.",
 		href: "https://portfolio.edwinlst.tech",
 		meta: "Explorar",
 	},
 	{
 		title: "GitHub",
-		description: "Código fuente, contribuciones open-source y proyectos personales.",
+		description: "Código fuente, contribuciones y proyectos personales.",
 		href: "https://github.edwinlst.tech",
 		meta: "@edwinlustre",
 	},
 	{
 		title: "LinkedIn",
-		description: "Trayectoria profesional, aptitudes y red de contactos.",
+		description: "Perfil profesional y trayectoria.",
 		href: "https://linkedin.edwinlst.tech",
 		meta: "Conectar",
 	},
 	{
 		title: "Correo Electrónico",
-		description: "Escríbeme directamente para oportunidades, vacantes o dudas.",
+		description: "Escríbeme directamente.",
 		href: "mailto:edwin51092@hotmail.com",
 		meta: "Mensaje directo",
 	},
@@ -29,10 +29,8 @@ const links = [
 ---
 
 <section class="links-section">
-	<div class="links-container">
-		<div class="section-tag">
-			<span>Links Principales</span>
-		</div>
+	<div class="links-wrapper">
+		<div class="section-tag">Links</div>
 
 		<div class="links-list">
 			{links.map((link) => (
@@ -43,8 +41,8 @@ const links = [
 					class="link-row"
 				>
 					<div class="link-main">
-						<h2 class="link-title">{link.title}</h2>
-						<p class="link-description">{link.description}</p>
+						<span class="link-title">{link.title}</span>
+						<span class="link-desc">{link.description}</span>
 					</div>
 					<div class="link-side">
 						<span class="link-meta">{link.meta}</span>
@@ -58,23 +56,33 @@ const links = [
 
 <style>
 	.links-section {
+		position: relative;
+		z-index: 10;
 		max-width: 1200px;
 		margin: 0 auto;
-		padding: 1.5rem 2rem 7rem 2rem;
+		padding: 0 2rem 6rem 2rem;
 		width: 100%;
 	}
 
-	.links-container {
+	.links-wrapper {
 		display: flex;
 		flex-direction: column;
-		gap: 1.75rem;
+		gap: 1.5rem;
+
+		/* Frosted backdrop matching hero */
+		background: rgba(var(--color-bg-rgb), 0.82);
+		backdrop-filter: blur(4px);
+		-webkit-backdrop-filter: blur(4px);
+		border-radius: 1.25rem;
+		border: 1px solid var(--color-border);
+		padding: 2rem 2.25rem;
 	}
 
 	.section-tag {
-		font-size: 0.82rem;
-		font-weight: 600;
+		font-size: 0.78rem;
+		font-weight: 700;
 		text-transform: uppercase;
-		letter-spacing: 0.08em;
+		letter-spacing: 0.09em;
 		color: var(--color-muted);
 	}
 
@@ -82,20 +90,19 @@ const links = [
 		display: flex;
 		flex-direction: column;
 		border-top: 1px solid var(--color-border);
-		transition: border-color 0.25s ease;
 	}
 
 	.link-row {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 1.75rem 0.5rem;
+		padding: 1.4rem 0.35rem;
 		border-bottom: 1px solid var(--color-border);
 		text-decoration: none;
 		color: inherit;
-		gap: 2rem;
+		gap: 1.5rem;
 		border-radius: 4px;
-		transition: background-color 0.2s ease, border-color 0.25s ease;
+		transition: background-color 0.2s ease;
 	}
 
 	.link-row:hover {
@@ -105,45 +112,41 @@ const links = [
 	.link-main {
 		display: flex;
 		flex-direction: column;
-		gap: 0.35rem;
-		max-width: 640px;
+		gap: 0.2rem;
 	}
 
 	.link-title {
-		font-size: 1.35rem;
+		font-size: 1.2rem;
 		font-weight: 600;
-		letter-spacing: -0.025em;
+		letter-spacing: -0.02em;
 		color: var(--color-text);
-		margin: 0;
 		transition: color 0.25s ease;
 	}
 
-	.link-description {
-		font-size: 0.95rem;
+	.link-desc {
+		font-size: 0.88rem;
 		color: var(--color-muted);
-		line-height: 1.5;
-		margin: 0;
+		line-height: 1.4;
 		transition: color 0.25s ease;
 	}
 
 	.link-side {
 		display: flex;
 		align-items: center;
-		gap: 1.25rem;
+		gap: 1rem;
 		flex-shrink: 0;
 	}
 
 	.link-meta {
-		font-size: 0.88rem;
+		font-size: 0.82rem;
 		color: var(--color-muted);
 		font-weight: 500;
-		letter-spacing: -0.01em;
 	}
 
 	.link-arrow {
-		font-size: 1.35rem;
+		font-size: 1.25rem;
 		color: var(--color-text);
-		transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+		transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
 	.link-row:hover .link-arrow {
@@ -151,18 +154,9 @@ const links = [
 	}
 
 	@media (max-width: 640px) {
-		.links-section {
-			padding: 1rem 1.5rem 5rem 1.5rem;
-		}
-		.link-row {
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 0.75rem;
-			padding: 1.4rem 0.25rem;
-		}
-		.link-side {
-			width: 100%;
-			justify-content: space-between;
-		}
+		.links-section { padding: 0 1.25rem 5rem 1.25rem; }
+		.links-wrapper { padding: 1.5rem 1.25rem; border-radius: 1rem; }
+		.link-row { flex-direction: column; align-items: flex-start; gap: 0.6rem; padding: 1.2rem 0.25rem; }
+		.link-side { width: 100%; justify-content: space-between; }
 	}
 </style>

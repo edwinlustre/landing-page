@@ -1,0 +1,105 @@
+---
+// Full-screen ambient space background with smoothly scrolling stars
+// Mobile-optimized: immune to address-bar scroll resizing jumps
+---
+
+<canvas id="spaceCanvas" aria-hidden="true"></canvas>
+
+<script>
+const canvas = document.getElementById('spaceCanvas') as HTMLCanvasElement;
+const ctx = canvas.getContext('2d')!;
+
+let W = (canvas.width = window.innerWidth);
+let H = (canvas.height = window.innerHeight);
+
+interface Star {
+	x: number;
+	y: number;
+	size: number;
+	speed: number;
+	alpha: number;
+	baseAlpha: number;
+	twinkleSpeed: number;
+}
+
+let stars: Star[] = [];
+
+function isDark() {
+	return document.documentElement.classList.contains('dark');
+}
+
+function initStars() {
+	stars = [];
+	const count = Math.min(Math.floor((W * H) / 9000), 120);
+	for (let i = 0; i < count; i++) {
+		const baseAlpha = Math.random() * 0.45 + 0.1;
+		stars.push({
+			x: Math.random() * W,
+			y: Math.random() * H,
+			size: Math.random() < 0.8 ? 1 : Math.random() < 0.95 ? 1.5 : 2,
+			speed: Math.random() * 0.35 + 0.12,
+			alpha: baseAlpha,
+			baseAlpha,
+			twinkleSpeed: Math.random() * 0.02 + 0.005,
+		});
+	}
+}
+
+// Only re-populate stars if width changes significantly (e.g. rotation or window resize),
+// not on tiny height changes caused by mobile address bar show/hide
+let lastW = W;
+function resize() {
+	const newW = window.innerWidth;
+	const newH = window.innerHeight;
+	W = canvas.width = newW;
+	H = canvas.height = newH;
+	
+	if (Math.abs(newW - lastW) > 50) {
+		lastW = newW;
+		initStars();
+	}
+}
+
+window.addEventListener('resize', resize);
+initStars();
+
+let tick = 0;
+function render() {
+	ctx.clearRect(0, 0, W, H);
+	const dark = isDark();
+	const rgb = dark ? '255, 255, 255' : '20, 20, 25';
+	tick++;
+
+	for (let i = 0; i < stars.length; i++) {
+		const s = stars[i];
+		s.x -= s.speed;
+		if (s.x < 0) {
+			s.x = W;
+			s.y = Math.random() * H;
+		}
+
+		const currentAlpha = s.baseAlpha + Math.sin(tick * s.twinkleSpeed) * 0.15;
+		const finalAlpha = Math.max(0.04, Math.min(0.7, currentAlpha));
+
+		ctx.fillStyle = `rgba(${rgb}, ${finalAlpha})`;
+		ctx.fillRect(Math.round(s.x), Math.round(s.y), s.size, s.size);
+	}
+
+	requestAnimationFrame(render);
+}
+
+render();
+</script>
+
+<style>
+	#spaceCanvas {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		z-index: 0;
+		pointer-events: none;
+		opacity: 0.85;
+	}
+</style>

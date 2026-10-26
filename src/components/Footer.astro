@@ -1,57 +1,43 @@
 ---
-// Antigravity.google inspired Footer with balanced layout, complete wordmark, and clean non-repetitive links
+// Footer — giant Hablemos. + 3-part balanced bottom bar
 ---
 
-<footer class="antigravity-footer" id="contacto">
+<footer class="footer" id="contacto">
 	<div class="footer-inner">
-		<!-- Top footer area: concise message & direct action -->
-		<div class="footer-top">
-			<div class="footer-callout">
-				<span class="callout-tag">Contacto directo</span>
-				<p class="callout-text">
-					¿Tienes una propuesta, proyecto o vacante en mente? Hablemos.
-				</p>
-			</div>
-
-			<div class="footer-direct-actions">
-				<div class="email-box">
-					<span class="box-label">Correo electrónico</span>
-					<div class="email-action-row">
-						<a href="mailto:edwin51092@hotmail.com" class="email-link">edwin51092@hotmail.com</a>
-					</div>
-				</div>
-			</div>
+		<!-- Contact line: simple, direct -->
+		<div class="footer-contact">
+			<span class="contact-label">Contacto</span>
+			<a href="mailto:edwin51092@hotmail.com" class="contact-email">
+				edwin51092@hotmail.com
+			</a>
 		</div>
 
-		
-		<div class="wordmark-container">
-			<h2 class="giant-wordmark">Di hola :D</h2>
+		<!-- Giant Wordmark -->
+		<div class="wordmark-wrap">
+			<h2 class="wordmark" id="footerWordmark">Hablemos.</h2>
 		</div>
 
-		<!-- Bottom Bar -->
-		<div class="footer-bottom-bar">
-			<div class="brand-signature">
-				<span>Edwin Rodriguez</span>
-			</div>
+		<!-- Bottom bar: Author | Web Credit | Copyright -->
+		<div class="footer-bottom">
+			<span class="footer-name">Edwin Rodriguez</span>
 			
-			<div class="bottom-links">
-				<a href="https://github.edwinlst.tech" target="_blank" rel="noopener noreferrer" class="bottom-link">GitHub</a>
-				<a href="https://linkedin.edwinlst.tech" target="_blank" rel="noopener noreferrer" class="bottom-link">LinkedIn</a>
-				<span class="bottom-copyright">© {new Date().getFullYear()}</span>
-			</div>
+			<span class="pixel-credit">sitio hecho a mano con bytes reciclados</span>
+			
+			<span class="footer-copy">© {new Date().getFullYear()}</span>
 		</div>
 	</div>
 </footer>
 
 <style>
-	/* Antigravity-inspired dark grey footer */
-	.antigravity-footer {
-		background-color: #0d0d0f; /* Deep sleek dark grey */
+	.footer {
+		background-color: #0d0d0f;
 		color: #ffffff;
 		width: 100%;
 		margin-top: auto;
-		border-top: 1px solid #1f1f24;
+		border-top: 1px solid #1a1a1f;
 		overflow: hidden;
+		position: relative;
+		z-index: 10;
 	}
 
 	.footer-inner {
@@ -60,198 +46,101 @@
 		padding: 5rem 2rem 2.5rem 2rem;
 		display: flex;
 		flex-direction: column;
-		gap: 3.5rem;
+		gap: 0;
 	}
 
-	/* Top section */
-	.footer-top {
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-start;
-		flex-wrap: wrap;
-		gap: 2.5rem;
-	}
-
-	.footer-callout {
-		max-width: 380px;
+	/* Contact line */
+	.footer-contact {
 		display: flex;
 		flex-direction: column;
-		gap: 0.65rem;
+		gap: 0.4rem;
+		margin-bottom: 3.5rem;
 	}
 
-	.callout-tag {
+	.contact-label {
 		font-size: 0.78rem;
 		font-weight: 600;
 		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		color: #9ca3af;
+		letter-spacing: 0.1em;
+		color: #71717a;
 	}
 
-	.callout-text {
-		font-size: 1.08rem;
-		line-height: 1.55;
-		color: #e4e4e7;
-		letter-spacing: -0.01em;
-	}
-
-	.footer-direct-actions {
-		display: flex;
-		gap: 3.5rem;
-		flex-wrap: wrap;
-	}
-
-	.email-box, .location-box {
-		display: flex;
-		flex-direction: column;
-		gap: 0.65rem;
-	}
-
-	.box-label {
-		font-size: 0.78rem;
-		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		color: #9ca3af;
-	}
-
-	.email-action-row {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-	}
-
-	.email-link {
+	.contact-email {
 		color: #ffffff;
 		text-decoration: none;
-		font-size: 1rem;
+		font-size: 1.1rem;
 		font-weight: 500;
 		letter-spacing: -0.01em;
+		opacity: 0.9;
 		transition: opacity 0.2s ease;
+		display: inline-block;
 	}
 
-	.email-link:hover {
-		opacity: 0.75;
-	}
+	.contact-email:hover { opacity: 0.65; }
 
-	.location-text {
-		color: #d1d1d6;
-		font-size: 0.95rem;
-		letter-spacing: -0.01em;
-	}
-
-	.mini-copy-btn {
-		background: #1e1e24;
-		color: #d1d1d6;
-		border: 1px solid #2e2e38;
-		border-radius: 9999px;
-		padding: 0.25rem 0.65rem;
-		font-size: 0.74rem;
-		font-weight: 500;
-		font-family: inherit;
-		cursor: pointer;
-		transition: all 0.2s ease;
-	}
-
-	.mini-copy-btn:hover {
-		background: #ffffff;
-		color: #000000;
-		border-color: #ffffff;
-	}
-
-	.mini-copy-btn.copied {
-		background: #10b981;
-		color: #ffffff;
-		border-color: #10b981;
-	}
-
-	/* Giant Wordmark Section - Fitted precisely so it never gets cut off */
-	.wordmark-container {
+	/* Giant Wordmark */
+	.wordmark-wrap {
 		width: 100%;
-		padding: 0.2rem 0 0.5rem 0;
 		overflow: hidden;
-		display: flex;
-		align-items: center;
+		padding-bottom: 3rem;
 	}
 
-	.giant-wordmark {
-		/* Scale with container width so it fits on 1 line without cutting letters */
-		font-size: clamp(2rem, 6.7vw, 5.8rem);
-		font-weight: 1000;
+	.wordmark {
+		font-size: clamp(2.3rem, 11vw, 9.5rem);
+		font-weight: 800;
 		letter-spacing: -0.04em;
 		line-height: 0.95;
 		color: #ffffff;
 		white-space: nowrap;
 		margin: 0;
 		user-select: none;
-		transition: opacity 0.25s ease;
+		transition: opacity 0.3s ease;
+		cursor: default;
 	}
 
-	.giant-wordmark:hover {
-		opacity: 0.9;
-	}
+	.wordmark:hover { opacity: 0.88; }
 
-	/* Bottom Bar */
-	.footer-bottom-bar {
+	/* Bottom bar */
+	.footer-bottom {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		flex-wrap: wrap;
-		gap: 1.5rem;
 		padding-top: 2rem;
-		border-top: 1px solid #1f1f24;
+		border-top: 1px solid #1a1a1f;
+		flex-wrap: wrap;
+		gap: 1.25rem;
 	}
 
-	.brand-signature {
-		font-size: 1.05rem;
+	.footer-name {
+		font-size: 1rem;
 		font-weight: 700;
 		letter-spacing: -0.02em;
 		color: #ffffff;
 	}
 
-	.bottom-links {
-		display: flex;
-		align-items: center;
-		gap: 2rem;
-		flex-wrap: wrap;
+	.pixel-credit {
+		font-family: var(--font-pixel);
+		font-size: 0.58rem;
+		color: #71717a;
+		letter-spacing: 0.05em;
+		line-height: 1.5;
+		text-align: center;
 	}
 
-	.bottom-link {
-		color: #9ca3af;
-		text-decoration: none;
-		font-size: 0.9rem;
-		letter-spacing: -0.01em;
-		transition: color 0.2s ease;
-	}
-
-	.bottom-link:hover {
-		color: #ffffff;
-	}
-
-	.bottom-copyright {
-		color: #6b7280;
-		font-size: 0.9rem;
+	.footer-copy {
+		font-size: 0.88rem;
+		color: #52525b;
 	}
 
 	@media (max-width: 768px) {
-		.footer-inner {
-			padding: 3.5rem 1.5rem 2rem 1.5rem;
-			gap: 2.5rem;
-		}
-		.footer-top {
-			flex-direction: column;
-			gap: 2rem;
-		}
-		.footer-direct-actions {
-			flex-direction: column;
-			gap: 1.5rem;
-		}
-		.footer-bottom-bar {
+		.footer-inner { padding: 3.5rem 1.5rem 2rem 1.5rem; }
+		.footer-bottom {
 			flex-direction: column;
 			align-items: flex-start;
-			gap: 1rem;
+			gap: 0.85rem;
 		}
-		.bottom-links {
-			gap: 1.25rem;
+		.pixel-credit {
+			text-align: left;
 		}
 	}
 </style>

@@ -1,0 +1,149 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+---
+
+<Layout title="404 — Página no encontrada | Edwin Rodríguez">
+	<ThemeToggle />
+	<main class="not-found-page">
+		<div class="not-found-content">
+			<p class="not-found-label">ERROR 404 <span aria-hidden="true">/</span> PÁGINA NO ENCONTRADA</p>
+			<p class="not-found-code" aria-hidden="true">404</p>
+			<h1>Este camino no lleva a ningún sitio.</h1>
+			<p class="not-found-description">
+				La página que buscas no existe o quizá cambió de dirección. Puedes volver al inicio o seguir explorando mi trabajo.
+			</p>
+			<nav class="not-found-actions" aria-label="Navegación de error">
+				<a class="not-found-button not-found-button-primary" href="/">Volver al inicio <span aria-hidden="true">↗</span></a>
+				<a class="not-found-button not-found-button-secondary" href="https://portfolio.edwinlst.tech">Visitar portafolio <span aria-hidden="true">↗</span></a>
+			</nav>
+			<p class="not-found-signature">Edwin Rodríguez <span aria-hidden="true">·</span> Desarrollador web</p>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.not-found-page {
+		min-height: calc(100vh - 86px);
+		display: grid;
+		place-items: center;
+		padding: 2rem;
+	}
+
+	.not-found-content {
+		width: min(100%, 720px);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+
+	.not-found-label {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		color: var(--color-muted);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.13em;
+	}
+
+	.not-found-label span {
+		opacity: 0.45;
+	}
+
+	.not-found-code {
+		margin: 0.6rem 0 0;
+		color: var(--color-text);
+		font-size: clamp(8rem, 27vw, 16rem);
+		font-weight: 800;
+		letter-spacing: -0.095em;
+		line-height: 0.9;
+	}
+
+	.not-found-content h1 {
+		margin: 1.6rem 0 0;
+		color: var(--color-text);
+		font-size: clamp(1.65rem, 4vw, 2.5rem);
+		font-weight: 700;
+		letter-spacing: -0.055em;
+		line-height: 1.15;
+	}
+
+	.not-found-description {
+		max-width: 510px;
+		margin: 1rem 0 0;
+		color: var(--color-muted);
+		font-size: 1rem;
+		line-height: 1.7;
+	}
+
+	.not-found-actions {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.75rem;
+		margin-top: 2rem;
+	}
+
+	.not-found-button {
+		min-height: 48px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		padding: 0.75rem 1.15rem;
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		color: var(--color-text);
+		font-size: 0.9rem;
+		font-weight: 600;
+		text-decoration: none;
+		transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+	}
+
+	.not-found-button:hover {
+		transform: translateY(-2px);
+	}
+
+	.not-found-button-primary {
+		border-color: var(--color-text);
+		background: var(--color-text);
+		color: var(--color-bg);
+	}
+
+	.not-found-button-primary:hover {
+		opacity: 0.85;
+	}
+
+	.not-found-button-secondary:hover {
+		background: var(--color-card-hover);
+	}
+
+	.not-found-signature {
+		margin: 2.25rem 0 0;
+		color: var(--color-muted);
+		font-size: 0.8rem;
+		letter-spacing: 0.02em;
+	}
+
+	.not-found-signature span {
+		margin: 0 0.25rem;
+	}
+
+	@media (max-width: 640px) {
+		.not-found-page {
+			min-height: calc(100vh - 72px);
+			padding: 1.5rem;
+		}
+
+		.not-found-description {
+			font-size: 0.95rem;
+		}
+
+		.not-found-actions {
+			width: 100%;
+			flex-direction: column;
+		}
+	}
+</style>

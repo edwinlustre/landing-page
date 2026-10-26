@@ -1,25 +1,40 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SpaceBackground from '../components/SpaceBackground.astro';
+import PlaneGame from '../components/PlaneGame.astro';
+import EasterEggs from '../components/EasterEggs.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
 import Hero from '../components/Hero.astro';
 import MainLinks from '../components/MainLinks.astro';
 import Footer from '../components/Footer.astro';
-import ThemeToggle from '../components/ThemeToggle.astro';
 ---
 
-<Layout title="Hola :D | Edwin Lustre">
+<Layout title="Hola :D | Edwin Rodriguez">
+	<!-- Background ambient cosmic starfield layer -->
+	<SpaceBackground />
+
+	<!-- Easter eggs (console art, double-click name, Konami code, etc.) -->
+	<EasterEggs />
+
+	<!-- Top navigation -->
 	<ThemeToggle />
-	<main class="main-content">
+
+	<main class="page-content">
 		<Hero />
 		<MainLinks />
+		<PlaneGame />
 	</main>
+
 	<Footer />
 </Layout>
 
 <style>
-	.main-content {
+	.page-content {
 		flex: 1;
 		display: flex;
 		flex-direction: column;
 		width: 100%;
+		position: relative;
+		z-index: 10;
 	}
 </style>
