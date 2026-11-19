@@ -34,9 +34,9 @@ const links = [
 ];
 ---
 
-<section class="links-section">
+<section class="links-section" id="links">
 	<div class="links-wrapper">
-		<div class="section-tag">Links</div>
+		<div class="section-heading"><div class="section-tag">Por aquí</div><h2>Encuéntrame en la web</h2><p>Proyectos, código y formas de conectar.</p></div>
 
 		<div class="links-list">
 			{links.map((link) => (
@@ -91,6 +91,8 @@ const links = [
 		letter-spacing: 0.09em;
 		color: var(--color-muted);
 	}
+	.section-heading h2 { margin-top: .45rem; font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -.04em; }
+	.section-heading p { color: var(--color-muted); font-size: .95rem; }
 
 	.links-list {
 		display: flex;

@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import SpaceBackground from '../components/SpaceBackground.astro';
 import PlaneGame from '../components/PlaneGame.astro';
 import EasterEggs from '../components/EasterEggs.astro';
-import ThemeToggle from '../components/ThemeToggle.astro';
+import BottomBar from '../components/BottomBar.astro';
 import Hero from '../components/Hero.astro';
 import MainLinks from '../components/MainLinks.astro';
 import Footer from '../components/Footer.astro';
@@ -17,7 +17,7 @@ import Footer from '../components/Footer.astro';
 	<EasterEggs />
 
 	<!-- Top navigation -->
-	<ThemeToggle />
+	<BottomBar />
 
 	<main class="page-content">
 		<Hero />
@@ -34,6 +34,7 @@ import Footer from '../components/Footer.astro';
 		display: flex;
 		flex-direction: column;
 		width: 100%;
+		padding-bottom: 7rem;
 		position: relative;
 		z-index: 10;
 	}
